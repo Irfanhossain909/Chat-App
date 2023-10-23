@@ -20,5 +20,12 @@ class VerificationActivity : AppCompatActivity() {
             finish()
         }
 
+        binding.phnTxt.requestFocus()
+        binding.contineuBtn.setOnClickListener {
+            var intent = Intent(this@VerificationActivity,OTPActivity::class.java)
+            intent.putExtra("phoneNumber",binding.phnTxt.text.toString())
+            startActivity(intent)
+        }
+
     }
 }
