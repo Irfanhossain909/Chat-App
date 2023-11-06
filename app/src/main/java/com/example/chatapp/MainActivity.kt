@@ -48,12 +48,12 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
+
                 }
 
             })
 
-        binding.recycalerView.adapter = userAdapter
+        binding!!.recycalerView.adapter = userAdapter
         database!!.reference.child("users").addValueEventListener(object :ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 users!!.clear()

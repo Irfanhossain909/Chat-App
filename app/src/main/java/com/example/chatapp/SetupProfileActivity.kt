@@ -65,7 +65,7 @@ class SetupProfileActivity : AppCompatActivity() {
                                 .setValue(user)
                                 .addOnCompleteListener {
                                     dialog!!.dismiss()
-                                    val intent = Intent(this, MainActivity::class.java)
+                                    val intent = Intent(this@SetupProfileActivity, MainActivity::class.java)
                                     startActivity(intent)
                                     finish()
                                 }
