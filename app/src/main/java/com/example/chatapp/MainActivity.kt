@@ -15,7 +15,6 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 class MainActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityMainBinding
     private var database:FirebaseDatabase?=null
     private var users:ArrayList<User>?= null
@@ -27,16 +26,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        dialog = ProgressDialog(this)
-        dialog!!.setMessage("Getting Data...")
+        dialog = ProgressDialog(this@MainActivity)
+        dialog!!.setMessage("Uploading Image...")
         dialog!!.setCancelable(false)
 
         database = FirebaseDatabase.getInstance()
         users = ArrayList<User>()
 
-        userAdapter = UserAdapter(this, users!!)
+        userAdapter = UserAdapter(this@MainActivity,users!!)
 
-        var layoutManager = GridLayoutManager(this,2)
+        var layoutManager = GridLayoutManager(this@MainActivity,2)
 
         binding.recycalerView.layoutManager = layoutManager
 
@@ -47,9 +46,7 @@ class MainActivity : AppCompatActivity() {
                     user = snapshot.getValue(User::class.java)
                 }
 
-                override fun onCancelled(error: DatabaseError) {
-
-                }
+                override fun onCancelled(error: DatabaseError) {}
 
             })
 
@@ -66,9 +63,7 @@ class MainActivity : AppCompatActivity() {
                 userAdapter!!.notifyDataSetChanged()
             }
 
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
+            override fun onCancelled(error: DatabaseError) {}
 
         })
 
